@@ -6,7 +6,7 @@ const port = 3000;
 const app = express();
 
 const index = "<a href='/sobre'> Sobre</a><a href='/info'> Info</a>";
-const sobre = 'Vc está na página "sobre"<br.<a href="/">Voltar</a>';
+const sobre = 'Vc está na página "sobre"<br><a href="/">Voltar</a>';
 const info = 'Vc está na página "info"<br><a href="/">Voltar</a>';
 
 /*étodo express.get necessita de dois parametros
@@ -21,16 +21,11 @@ app.get("/sobre", (req,res) => {
     res.send(sobre);
 });
 
-app.get("/login", (req, res) => {
-    res.send(login);
-});
-
-app.get("/cadastro", (req, res) => {
-    res.send(cadastro);
+app.get("/info", (req, res) => {
+    res.send(info);
 });
 
 // app.listen() deve ser o último comando da aplicação (app.js)
 app.listen(port, () => {
     console.log(`Servidor sendo executado na porta ${port}!`);
-
 }); 
