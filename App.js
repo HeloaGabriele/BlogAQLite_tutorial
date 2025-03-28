@@ -1,15 +1,21 @@
 const express = require("express"); // Importa lib do Express
 const sqlite3 = require("sqlite3"); // Importa lib do sqlite3
+const bodyParser = require("body-parser");
 
 // Porta TCP do servidor HTTP da aplicação
 const port = 3000;
 
 const app = express(); // Instancia para uso do Express
 
-const db = new sqlite3.Database("user.db"); // Instancia para o uso do sqlite3, e usa o arquivo 'user.db'
-db.serialize( () => { // ESte método permite enviar comandos SQL em modo 'sequencial'
+// Instancia para o uso do sqlite3, e usa o arquivo 'user.db'
+const db = new sqlite3.Database("user.db"); 
+
+// ESte método permite enviar comandos SQL em modo 'sequencial'
+db.serialize( () => { 
     db.run(
-        "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)"
+        `CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT,
+        email TEXT, tel TEXT, cpf TEXT, rg TEXT)`
+
     );
 });
 
@@ -21,6 +27,7 @@ db.serialize( () => { // ESte método permite enviar comandos SQL em modo 'seque
 // Middleware para isto, que neste caso é o express.static, que gerencia rotas esáticas 
 app.use("/static", express.static(__dirname + "/static"));
 
+app.use(bodyParser.urlencoded({extended: true}));
 // Configurar EJS como motor de visualização
 app.set("view engine", "ejs");
 // Cria conexão com o banco de dados
@@ -51,13 +58,19 @@ app.post("/login", (req, res) => {
     res.send("Login ainda não implementado!");
 });
 
-
 app.get("/cadastro", (req, res) => {
     res.send(cadastro);
+});
+
+app.post("/cadastro", (req, res) => {
+    req.body
+    ? console.log(JSON.stringify(req.body)) 
+    : console.log(`Body vazio: ${req.body}`);
+
+    res.send(`Bem-vindo usuário: ${req.body.username}, seu email é ${req.body.email}`); 
 });
 
 // app.listen() deve ser o último comando da aplicação (app.js)
 app.listen(port, () => {
     console.log(`Servidor sendo executado na porta ${port}!`);
-
-}); 
+    }); 

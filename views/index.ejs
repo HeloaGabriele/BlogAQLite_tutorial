@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../static/styles/styles.css" class="stylesheet" />
 
     <!-- Link JS externo -->
-    <script src="../static/scripts/scripts.js" defer></script>
+    
+    <!-- <script src="../static/scripts/scripts.js" defer></script> -->
   </head>
   <body>
     <section class="container">
@@ -20,21 +21,21 @@
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
-      <form id="cadastroForm">
+      <form id="cadastroForm" action="/cadastro" method="post">
         <div class="title">
           <h1>Cadastre-se</h1>
           <p>Preencha os campos abaixo e torne-se parte da nossa comunidade</p>
         </div>
         <div class="input_data">
-          <input type="text" id="nome" name="nome" required />
+          <input type="text" id="nome" name="username" value="Heloa" required />
           <label for="">Nome</label>
         </div>
         <div class="input_data">
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" value="heloa@gmail.com" required />
           <label for="">Email</label>
         </div>
         <div class="input_data">
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" value="12345A!" required />
           <label for="">Senha</label>
         </div>
         <div class="input_data">
@@ -42,20 +43,21 @@
             type="password"
             id="confirmapassword"
             name="password"
+            value="12345A!"
             required
           />
           <label for="">Confirmar senha</label>
         </div>
         <div class="input_data">
-          <input type="tel" id="tel" name="tel" required />
+          <input type="tel" id="tel" name="tel" value="11111112222" required />
           <label for="">Contato</label>
         </div>
         <div class="input_data">
-          <input type="text" id="CPF" name="text" required />
+          <input type="text" id="CPF" name="cpf" value="222222222233" required />
           <label for="">CPF</label>
         </div>
         <div class="input_data">
-          <input type="text" id="RG" name="text" required />
+          <input type="text" id="RG" name="rg" value="11111134" required />
           <label for="">RG</label>
         </div>
         <div class="btnArea">
