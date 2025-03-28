@@ -13,8 +13,15 @@ db.serialize( () => { // ESte método permite enviar comandos SQL em modo 'seque
     );
 });
 
+// __dirname é a variável interna do nodejs que guarda o caminho absoluto do projeto, no SO
+// console.log(__dirname + "/static");
+
+// Aqui será acrescentado uma rota "/static", para a pasta __dirname + "/static"
+// O app.use é usado para acrescentar rotas novas para o  Express gerenciar e pode usar
+// Middleware para isto, que neste caso é o express.static, que gerencia rotas esáticas 
 app.use("/static", express.static(__dirname + "/static"));
 
+// Configurar EJS como motor de visualização
 app.set("view engine", "ejs");
 // Cria conexão com o banco de dados
 
