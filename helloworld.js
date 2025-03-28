@@ -5,10 +5,10 @@ const port = 3000;
 
 const app = express();
 
-/*étodo express.get necessita de dois parametros
+/* Método express.get necessita de dois parametros
 Na ARRW FUNCTION, o primeiro são os dados do servidor 
 (REQUISITION -'req') o segundo, são os dados que serão
-enviados ap cliente (RESULT -'res')*/
+enviados ap cliente (RESULT -'res') */
 app.get('/', (req, res) => {
     res.send("Olá Sesi!");
 });
