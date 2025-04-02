@@ -12,6 +12,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  text-decoration: none;
 }
 
 body {
@@ -19,9 +20,133 @@ body {
   background-color: #375534;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+header {
+  width: 100%;
+  padding: 10px 15px;
+  background-color: #0f2a1d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+  
+  header .logo {
+  color: #fff;
+  font-size: 3em;
+  letter-spacing: 1.5px;
+  }
+  
+  header nav a {
+  color: #fff;
+  font-size: 1.5em;
+  margin-right: 16px;
+  }
+  
+  header nav a:hover {
+  color: #e3eed4;
+  }
+
+  /* @keyframes animate {
+    0% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+    }
+    
+    60% {
+    transform: translateY(80vh) scaleY(1);
+    opacity: 1;
+    }
+    
+    80% {
+    transform: translateY(80vh) scaleY(0.2);
+    opacity: 0.5;
+    }
+    
+    100% {
+    transform: translateY(80vh) scaleY(0.2);
+    opacity: 0;
+    }
+    } */
+
+    .container_rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 100vh;
+     background-color: transparent;
+  }
+  
+  .cloud {
+      position: absolute;
+      width: 250px;
+      height: 100px;
+      background: url("../Images/nuvem.png") center / cover no-repeat;
+      filter: drop-shadow(2px 2px 20px #e3eed4);
+  }
+  
+  .cloud:nth-child(1) {
+      z-index: 1000;
+      top: 2.5%;
+      left: 5%;
+  }
+  
+  .cloud:nth-child(2) {
+      z-index: 3000;
+      top: 2.5%;
+      left: 24%;
+  }
+  
+  .cloud:nth-child(3) {
+      z-index: 3000;
+      top: 9.5%;
+      left: 5%;
+  }
+  
+  .rain {
+      background-color: #e3eed4;
+      width: 5px;
+      height: 15px;
+      border-radius: 0 50% 50% 50%;
+      transform: rotate(45deg);
+      box-shadow: inset -25px 10px 0px -10px lightblue;
+      z-index: 1000;
+      position: absolute;
+      top: 90px;
+  
+      transform-origin: bottom;
+      animation: animate 2s linear infinite;
+  }
+  
+  @keyframes animate {
+      0% {
+          transform: translateY(0) scaleY(1);
+          opacity: 1;
+      }
+  
+      60% {
+          transform: translateY(80vh) scaleY(1);
+          opacity: 1;
+      }
+  
+      80% {
+          transform: translateY(80vh) scaleY(0.2);
+          opacity: 0.5;
+      }
+  
+      100% {
+          transform: translateY(80vh) scaleY(0.2);
+          opacity: 0;
+      }
+  }
 
 .container {
   width: 80%;
@@ -187,4 +312,64 @@ body {
   border: 1px solid #0f2a1d;
   color: #0f2a1d;
   transition: 0.7s;
+}
+
+@media only screen and (max-width: 750px) {
+  .cloud:nth-child(1) {
+      top: 2%;
+      left: -25%;
+  }
+  .cloud:nth-child(2) {
+      top: 2%;
+      left: 0%;
+  }
+  .cloud:nth-child(3) {
+      top: 8.5%;
+      left: -25%;
+  }
+  .container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+  .image_container {
+      border-radius: 30px 30px 0 0;
+      height: 110vh; 
+  }
+  .image_container h1 {
+      font-size: 30px;
+  }
+  .image_container p {
+      font-size: 10px;
+  }
+  .image_container h1, 
+  .image_container p {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  }
+  #cadatroForm {
+      padding: 15px;
+  }
+}  
+
+footer {
+  width: 100%;
+  height: 70px;
+  background-color: black;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer p {
+    color: #fff;
+    font-size: 2em;
+    font-style: italic;
+    letter-spacing: 1.5px;
 }

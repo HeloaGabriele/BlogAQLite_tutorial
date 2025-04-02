@@ -196,3 +196,26 @@ function checkPasswordStrength(senha) {
 }
 
 celular.addEventListener("input", maskPhoneNumber);
+
+const rainFunction = () => {
+  let rain = document.createElement("span");
+//    let cont_rain = document.getElementsByClassName("container_rain");
+  let cont_rain = document.querySelector(".container_rain");
+  let left = Math.floor(Math.random() * (310 - 65) + 65);
+  let duration = Math.random() * 5;
+
+  rain.classList.add("rain");
+ // cont_rain[0].appenChild(rain);
+  cont_rain.appendChild(rain)
+  rain.style.left = left + "px";
+  rain.style.animationDuration = 1 + duration;
+
+  setTimeout(() =>{
+      // cont_rain[0].removeChild(rain);
+      cont_rain.removeChild(rain);
+  }, 1500);
+};
+
+setInterval(() => {
+  rainFunction();
+}, 250);
