@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade formulário</title>
-
-    <!-- Link CSS externo -->
-    <link rel="stylesheet" href="../static/styles/styles.css" class="stylesheet" />
-
-    <!-- Link JS externo -->
-    
-    <script src="../static/scripts/scripts.js" defer></script> 
-  </head>
+<%- include("../partials/head") %>
   <body> 
-    <%- include("menu") %>
+    <%- include("../partials/menu") %>
     <div class="container_rain">
       <span class="cloud"></span>
       <span class="cloud"></span>
@@ -29,11 +18,10 @@
           happy with your participation.
         </p>
       </div>
-      <div>   
+      <div style="font-size: 32px"> 
         <%- include("usertable")%>
       </div>
     </section>
-
-    <%- include("footer") %>
+    <%- include("../partials/footer") %>
   </body>
 </html>

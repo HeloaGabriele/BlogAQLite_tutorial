@@ -47,7 +47,7 @@ enviados ap cliente (RESULT -'res') */
 app.get('/', (req, res) => {
     // res.send(index);
     console.log("GET /index");
-    res.render("index");
+    res.render("pages/index");
     // res.redirect("/cadastro")//Redireciona para a ROTA cadastro.
 });
 
@@ -56,18 +56,23 @@ app.get("/usuarios", (req, res) => {
   db.all(query, (err, row) => {
     console.log(`GET /usuarios ${JSON.stringify(row)}`);
     // res.send("Lista de Usuários.");
-    res.render("usertable");
+    res.render("partials/usertable");
   });
+});
+
+app.get("/dashboard", (req, res) => {
+  console.log("GET /dashboard");
+  res.render("pages/dashboard");
 });
 
 app.get("/sobre", (req,res) => {
     console.log("GET /sobre");
-    res.render("sobre");
+    res.render("pages/sobre");
 });
 
 app.get("/login", (req, res) => {
     console.log("GET /login");
-    res.render("login");
+    res.render("pages/login");
 });
 
 app.post("/login", (req, res) => {
@@ -77,7 +82,7 @@ app.post("/login", (req, res) => {
 
 app.get("/cadastro", (req, res) => {
     console.log("GET /cadastro");
-    res.render("cadastro");
+    res.render("pages/cadastro");
 });
 
 app.post("/cadastro", (req, res) => {
