@@ -1,9 +1,12 @@
 const express = require("express"); // Importa lib do Express
 const sqlite3 = require("sqlite3"); // Importa lib do sqlite3
 const bodyParser = require("body-parser"); // Importa o body-parser
+const session = require("express-session");
 
 // Porta TCP do servidor HTTP da aplicação
 const port = 3000;
+
+let config = { Title: "", footer: ""};
 
 const app = express(); // Instancia para uso do Express
 
@@ -18,6 +21,15 @@ db.serialize( () => {
 
     );
 });
+
+// Configuração para uso de sessão (cookies) com Express
+app.use(
+  session( {
+    secret: "qualquersenha",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
 
 // __dirname é a variável interna do nodejs que guarda o caminho absoluto do projeto, no SO
 // console.log(__dirname + "/static");
@@ -47,7 +59,8 @@ enviados ap cliente (RESULT -'res') */
 app.get('/', (req, res) => {
     // res.send(index);
     console.log("GET /index");
-    res.render("pages/index");
+    config = {Title: "Blog da Turma I2HNA -  Sesi de Nova Odessa", footer: ""};
+    res.render("pages/index", config);
     // res.redirect("/cadastro")//Redireciona para a ROTA cadastro.
 });
 
@@ -62,27 +75,47 @@ app.get("/usuarios", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
   console.log("GET /dashboard");
-  res.render("pages/dashboard");
+  config = {Title: "Página de Dashboard", footer: ""};
+  res.render("pages/dashboard", config );
 });
 
 app.get("/sobre", (req,res) => {
     console.log("GET /sobre");
-    res.render("pages/sobre");
+    config = {Title: "Página de Informações", footer: ""};
+    res.render("pages/sobre", config);
 });
 
 app.get("/login", (req, res) => {
     console.log("GET /login");
-    res.render("pages/login");
+    config = {Title: "Página de Login", footer: ""};
+    res.render("pages/login", config);
 });
 
 app.post("/login", (req, res) => {
     console.log("POST /login");
-    res.send("Login ainda não implementado!");
+    const {username, password} = req.body;
+
+    // Consultar o usuário no banco de dados
+    const query = "SELECT * FROM users WHERE username = ? AND password = ?";
+    db.get(query, [username, password], (err, row) => {   
+      if(err) throw err;   
+     
+       // Se usuário válido -> registra a sessão e redireciona para o dashboard
+       if(row){
+        req.session.logged = true;
+        req.session.username = username;
+        res.redirect("/dashboard");
+       } // Se não, envia mensagem de erro (Usuário Inválido)
+      else {
+        res.send("Usuário Inválido.");
+      }
+    });
 });
 
 app.get("/cadastro", (req, res) => {
     console.log("GET /cadastro");
-    res.render("pages/cadastro");
+    config = {Title: "Página de Cadastro", footer: ""};
+    res.render("pages/cadastro", config );
 });
 
 app.post("/cadastro", (req, res) => {

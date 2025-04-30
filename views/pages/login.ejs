@@ -3,7 +3,7 @@
 <%- include("../partials/head") %>
   <body>
     <% include("../partials/usertable")%>
-    <%- include("menu") %>
+    <%- include("../partials/menu") %>
       <div class="container_rain">
         <span class="cloud"></span>
         <span class="cloud"></span>
@@ -18,44 +18,23 @@
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
+
       <form id="cadastroForm" action="/login" method="post"> 
         <div class="title">
           <h1>Login</h1>
           <p>Preencha os campos abaixo e entem para a nossa comunidade</p>
         </div>
+
         <div class="input_data">
-          <input type="text" id="nome" name="nome" required />
+          <input type="text" id="nome" name="username" required />
           <label for="">Nome</label>
         </div>
-        <!-- <div class="input_data">
-          <input type="email" id="email" name="email" required />
-          <label for="">Email</label>
-        </div> -->
+
         <div class="input_data">
           <input type="password" id="password" name="password" required />
           <label for="">Senha</label>
         </div>
-        <!-- <div class="input_data">
-          <input
-            type="password"
-            id="confirmapassword"
-            name="password"
-            required
-          />
-          <label for="">Confirmar senha</label>
-        </div> -->
-        <!-- <div class="input_data">
-          <input type="tel" id="tel" name="tel" required />
-          <label for="">Contato</label>
-        </div>
-        <div class="input_data">
-          <input type="text" id="CPF" name="text" required />
-          <label for="">CPF</label>
-        </div>
-        <div class="input_data">
-          <input type="text" id="RG" name="text" required />
-          <label for="">RG</label>
-        </div> -->
+  
         <div class="btnArea">
           <p class="msgError"></p>
           <button id="btnSubmit" type="submit">Enviar</button>

@@ -7,18 +7,17 @@
             <th scope="col">Celular</th>
         </tr>
     </thead>
+
     <tbody>
+        <% for ( let index = 1; index < 10; index++ ) { %>
+            <% if (index % 3 == 0) { %>
         <tr>
-            <td>1</td>
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Celular</td>
+                <td><%=index%></td>
+                <td>Nome</td>
+                <td>Email</td>
+                <td>Celular</td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Nome</td>
-            <td>Email</td>
-            <td>Celular</td>
-        </tr>
+        <% } %>
+        <% } %>
     </tbody>
-</table>
+</table> 
