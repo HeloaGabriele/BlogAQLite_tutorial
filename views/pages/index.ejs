@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <%- include("../partials/head") %>
   <body>
-    <% include("../partials/usertable") %>
+    <%#- include("../partials/usertable") %>
     <%- include("../partials/menu") %>
     <div class="container_rain">
       <span class="cloud"></span>
@@ -11,6 +11,7 @@
   </div>
 
     <section class="container">
+
       <div class="image_container">
         <h1>Crie sua conta</h1>
         <p>
@@ -18,49 +19,60 @@
           descubra novos lugares ao redor do mundo!
         </p>
       </div>
+
       <form id="cadastroForm" action="/cadastro" method="post">
+
         <div class="title">
           <h1>Cadastre-se</h1>
           <p>Preencha os campos abaixo e torne-se parte da nossa comunidade</p>
         </div>
+
         <div class="input_data">
           <input type="text" id="nome" name="username" value="Heloa" required />
           <label for="">Nome</label>
         </div>
+
         <div class="input_data">
           <input type="email" id="email" name="email" value="heloa@gmail.com" required />
           <label for="">Email</label>
         </div>
+
         <div class="input_data">
-          <input type="password" id="password" name="password" value="12345A!" required />
+          <input type="password" id="password" name="password" value="12345Aa!" required />
           <label for="">Senha</label>
         </div>
+
         <div class="input_data">
           <input
             type="password"
             id="confirmapassword"
-            name="password"
-            value="12345A!"
+            name="confirmpassword"
+            value="12345Aa!"
             required
           />
           <label for="">Confirmar senha</label>
         </div>
+
         <div class="input_data">
           <input type="tel" id="tel" name="tel" value="11111112222" required />
           <label for="">Contato</label>
         </div>
+
         <div class="input_data">
           <input type="text" id="CPF" name="cpf" value="222222222233" required />
           <label for="">CPF</label>
         </div>
+
         <div class="input_data">
           <input type="text" id="RG" name="rg" value="11111134" required />
           <label for="">RG</label>
         </div>
+
         <div class="btnArea">
           <p class="msgError"></p>
           <button id="btnSubmit" type="submit">Enviar</button>
         </div>
+        
       </form>
     </section>
     

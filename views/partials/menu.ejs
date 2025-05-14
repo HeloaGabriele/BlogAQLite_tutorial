@@ -3,9 +3,13 @@
         <nav>
         <a href="/">Home</a>
         <a href="/sobre">Sobre</a>
-        <a href="/cadastro">Cadastro</a>
-        <a href="/login">Login</a>
+        <% if(!req.session.loggedin){%>
+        <a class="nav-link" href="/cadastro">Cadastrar</a>
+        <a class="nav-link" href="/login">Login</a>
+        <%} else{ %>
         <!-- <a href="/foradecasa">Lugarnenhum</a> -->
-         <a href="/dashboard">Dashboard</a>
+         <a class="nav-link" href="/dashboard">Dashboard</a>
+         <a class="nav-link" href="/logout">Sair </a>
+         <% } %>
         </nav>
-        </header>
+    </header>
