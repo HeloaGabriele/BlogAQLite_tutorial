@@ -164,7 +164,7 @@ app.post("/cadastro", (req, res) => {
     if (row) {
       // A variável 'row' irá retornar os dados do banco de dados
       // Executado atráves do SQL, variável query
-      res.send("Usuário já cadastrado! Por favor refaça o cadastro");
+      res.redirect("/no.register");
     } else {
       // 3. Se o usuário não existe no banco cadastrar
       const insertQuery =
@@ -172,11 +172,21 @@ app.post("/cadastro", (req, res) => {
       db.run(insertQuery, [username, password, email, tel, cpf, rg], (err) => {
         // Inserir a lógica INSERT
         if (err) throw err;
-        res.send("Usuário cadastrado com sucesso!");
+        res.redirec("/yes.register");
       });
     }
   });
   // res.send(`Bem-vindo usuário: ${req.body.username}, seu email é ${req.body.email}`);
+});
+
+app.get("/no.register", (req, res) => {
+  console.log()"GET /no.register");
+  config = (`Title: "Erro no Cadastro!!", footer: ""`);
+});
+
+app.get("/yes.register", (req, res) => {
+  console.log("GET /yes.register");
+  config = (`Title: "Acerto no Cadstro", footer: ""`);
 });
 
 app.use("*", (req, res) => {
