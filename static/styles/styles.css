@@ -54,6 +54,10 @@ header {
   color: #e3eed4;
   }
 
+  .destaque{
+    color: #fff;
+    font-style: bold;
+  }
   /* @keyframes animate {
     0% {
     transform: translateY(0) scaleY(1);
@@ -162,6 +166,12 @@ header {
   align-items: center;
 
   overflow: hidden;
+}
+
+table, th, td{
+  border: 1px solid;
+  padding: 5px;
+  background-color: #375534;
 }
 
 .image_container {
@@ -372,4 +382,72 @@ footer p {
     font-size: 2em;
     font-style: italic;
     letter-spacing: 1.5px;
+}
+
+.container_home {
+  width: 80%;
+  height: 80%;
+  background-color: #e3eed4;
+  border-radius: 30px;
+  box-shadow: 2px -10px 35px #0f2a1d;
+
+  display: grid;
+  /* grid-template-columns: 40% 60%; */
+  grid-auto-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+.image_container_home {
+  width: 100%;
+  height: 100%;
+  background: url("../images/wallpaper.jpg") center / cover no-repeat;
+  border-radius: 0 30px 30px 0;
+
+  padding-left: 10%;
+  position: relative; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.container_404 {
+  width: 80%;
+  height: 80%;
+  background-color: #e3eed4;
+  border-radius: 30px;
+  box-shadow: 2px -10px 35px #0f2a1d;
+
+  display: grid;
+  /* grid-template-columns: 40% 60%; */
+  grid-auto-rows: 1fr;
+  justify-items: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+
+.image_container_404 {
+  width: 100%;
+  height: 100%;
+  background: url("../images/Error404.png") center / cover no-repeat;
+  border-radius: 0 30px 30px 0;
+
+  padding-left: 10%;
+  position: relative; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
 }

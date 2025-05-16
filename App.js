@@ -87,7 +87,7 @@ app.get("/dashboard", (req, res) => {
 
       console.log(JSON.stringify(row));
       
-      res.render("pages/dashboard", {
+      res.render("pages/dashboard", { ...config,
         titulo: "DASHBOARD",
         dados: row,
         req: req,
@@ -120,10 +120,10 @@ app.post("/login", (req, res) => {
   const query = "SELECT * FROM users WHERE username=? AND password=?";
   db.get(query, [username, password], (err, row) => {
     if (err) throw err;
-    console.log(`req.row: ${JSON.stringify(row)}`)
+    console.log(`row: ${JSON.stringify(row)}`)
     // Se usuário válido -> registra a sessão e redireciona para o dashboard
     if (row) {
-      req.session.logged = true;
+      req.session.loggedin = true;
       req.session.username = username;
       res.redirect("/dashboard");
     } // Se não, envia mensagem de erro (Usuário Inválido)
@@ -177,6 +177,11 @@ app.post("/cadastro", (req, res) => {
     }
   });
   // res.send(`Bem-vindo usuário: ${req.body.username}, seu email é ${req.body.email}`);
+});
+
+app.use("*", (req, res) => {
+  config = {Title: "Error 404", footer: ""};
+  res.status(404).render("pages/404", {...config, req: req});
 });
 
 // app.listen() deve ser o último comando da aplicação (app.js)
